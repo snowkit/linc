@@ -1,36 +1,437 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>linc by snowkit</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>linc</h1>
-        <p></p>
+    <head>
+        <title>linc - </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="shortcut icon" href="./images/favicon.png" />
 
-        <p class="view"><a href="https://github.com/snowkit/linc">View the Project on GitHub <small>snowkit/linc</small></a></p>
+        <link rel="stylesheet" type="text/css" href="./css/style.css" media="all">
+        <link rel="stylesheet" type="text/css" href="./css/code.css" media="all">
+        <link rel="stylesheet" type="text/css" href="./css/font.css" media="all">
 
-      </header>
-      <section>
-        <h3>
-<a id="linc" class="anchor" href="#linc" aria-hidden="true"><span class="octicon octicon-link"></span></a>linc</h3>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/snowkit">snowkit</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+        <link rel="stylesheet" type="text/css" href="./css/tooltipster.css" media="all">
+        <link rel="stylesheet" type="text/css" href="./css/tooltipster-shadow.css" media="all">
+
+        <script src="./js/jquery-2.0.3.min.js"> </script>
+        <script src="./js/jquery.tooltipster.min.js"> </script>
+
+        <script>
+
+            $(document).ready(function() {
+
+                $('.section').css('display','none');
+                $('.readmore').click(function(e){
+                    var _child = $(this).parent().find('.section').first();
+                    var _opp = 'block';
+                    if( _child.css('display') == 'block' ) {
+                        _opp = 'none';
+                    } else {
+                    }
+                    _child.css('display', _opp);
+                });
+
+                $('div.sample').on('click', function(e){
+                        //get the data tag
+                    var content = $(this).attr('data-content');
+                        //remove clicking handler
+                    $(this).off('click');
+                        //replace the content!
+                    $(this).html('<iframe src="'+content+'" sandbox="allow-same-origin allow-scripts" style="overflow:hidden; scrollbar:none; border: 0; width:645px; height:450px;"></iframe> ')
+                });
+
+                $('.tooltip').each(function(e){
+                    var c = $(this).attr('data-tooltip');
+                    $(this).tooltipster({
+                        content:$('<span>' + c + '</span>'),
+                        interactive:true,
+                    theme:'tooltipster-shadow'
+                    });
+                });
+
+            }); //document.ready
+
+        </script>
+    </head>
+
+    <body>
+        <div class="content">
+            <p><a href="./index.html" id="logo"><img src="./images/logo.png" /></a></p>
+<div class="topmenu">
+<a href="#about">about</a> . <a href="#libs">libraries</a> <img src=".//images/github.png" alt="github">  <a href="https://snowkit.github.io/linc">home</a> . <a href="https://github.com/snowkit/linc/issues/">discuss</a>
+</div>
+
+<hr>
+<p><br/>
+<a name="about"></a> </p>
+<h2 id="what-is-linc-">What is linc?</h2>
+<p><strong>linc</strong> is <strong>collection of libraries</strong> for the <strong>Haxe c++</strong> target.</p>
+<blockquote>
+<p>“Low-level Interfaces Native Collection”</p>
+</blockquote>
+<p>&nbsp;</p>
+<p><a href="http://haxe.org"> <img src="./images/haxe.png" target="_blank" class="small-image"/> </a>   </p>
+<p><small class="haxedesc">Haxe is an expressive, beautiful modern programming language <br/>
+      that compiles its own code into other languages. <a href="http://haxe.org/" target="_blank"> learn more</a> </small></p>
+<p><br/></p>
+<hr>
+<p><a name="why"></a></p>
+<h3 id="why-">Why?</h3>
+<p><strong>Haxe and hxcpp give us direct, truly native access to c++.</strong>   </p>
+<p>Using <em>extern class</em>, we can <strong>use native libraries from Haxe code</strong>,<br>without significant overhead, without boxing, just pure c++ -<br>all while enjoying the Haxe language features as well.</p>
+<h3 id="purpose">Purpose</h3>
+<p>linc is a collection of <strong>native extern libraries</strong> that lean on the<br>hxcpp build toolchain - to create a link between native and Haxe code.   </p>
+<p>linc libraries follow a set of guidelines to allow consistently structured,<br>self contained, easy to drop in native libraries that leverage the<br>powerful Haxe/hxcpp features available to us.</p>
+<p>The purpose of linc as a collection is to build and maintain a<br>repository of quality, reliable tools that are framework agnostic,<br>low friction, and help expand the usefulness of Haxe in the wild.</p>
+<h3 id="ideals">Ideals</h3>
+<p>A linc library aims for being :</p>
+<ul>
+<li><strong>agnostic</strong> - aligns completely with the hxcpp build toolchain only</li>
+<li><strong>self contained</strong> - focused, singular purpose, isolated libraries</li>
+<li><strong>easy to include</strong> - only requires it’s library and hxcpp as dependencies</li>
+<li><strong>Haxe friendly</strong> - treats the user API interface as Haxe (not c++)</li>
+<li><strong>True to the c++</strong> - follows the library patterns as closely as possible</li>
+</ul>
+<p>A <strong>linc library</strong> conforms to <strong>a strongly held set of guidelines</strong>.   </p>
+<p><a href="#guidelines">In depth details</a></p>
+<hr>
+<h3 id="important">IMPORTANT</h3>
+<p><strong>linc is a new initiative!</strong></p>
+<p>We’re not done tying off loose ends.<br>However, many of the libraries are already usable.   </p>
+<p>We are sharing this sooner for the sake of collaboration<br>and feedback, and look forward to pushing the Haxe<br>eco system forward - together with the community.</p>
+<p>All feedback and discussions welcome,<br>Please keep the discussion on <a href="https://github.com/snowkit/linc">the linc repo</a> for the time being.</p>
+<hr>
+<p><a name="example"></a></p>
+<h3 id="show-me-">Show me!</h3>
+<p><code>Example.hx</code></p>
+<pre><code><span class="hljs-keyword">import</span> sdl.SDL;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>{
+
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> state : { window:Window, renderer:Renderer };
+
+        <span class="hljs-comment">//Haxe entry point</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+        SDL.init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
+        state = SDL.createWindowAndRenderer(<span class="hljs-number">320</span>, <span class="hljs-number">320</span>, SDL_WINDOW_RESIZABLE);
+        update();
+
+    }
+
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">while</span>(SDL.hasAnEvent()) {
+
+            <span class="hljs-keyword">var</span> e = SDL.pollEvent();
+            <span class="hljs-keyword">if</span>(e.type == SDL_QUIT) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+
+            SDL.setRenderDrawColor(state.renderer, <span class="hljs-number">255</span>,<span class="hljs-number">255</span>,<span class="hljs-number">255</span>,<span class="hljs-number">255</span>);
+            SDL.renderClear(state.renderer);
+            SDL.renderPresent(state.renderer);
+            SDL.delay(<span class="hljs-number">4</span>);
+
+        }
+    }
+
+}
+</code></pre><p><code>example.hxml</code></p>
+<pre><code class="lang-js">-main Example
+-cpp cpp/
+-lib linc_sdl
+#-D mac or linux or windows or android or ios
+</code></pre>
+<p><code>native haxe cpp build output</code></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">//Note that the output was stripped of hxcpp meta</span>
+<span class="hljs-comment">//information for clarity with -D no-debug </span>
+Void Example_obj::update( )
+{
+        <span class="hljs-keyword">bool</span> running = <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">while</span>((running)){
+            <span class="hljs-keyword">struct</span> _Function_2_1{
+                <span class="hljs-keyword">inline</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> Block( ){
+                    {
+                        SDL_PumpEvents();
+                        <span class="hljs-keyword">return</span> SDL_HasEvents((<span class="hljs-keyword">int</span>)<span class="hljs-number">0</span>,(<span class="hljs-keyword">int</span>)<span class="hljs-number">65535</span>);
+                    }
+                    <span class="hljs-keyword">return</span> null();
+                }
+            };
+            <span class="hljs-keyword">while</span>((_Function_2_1::Block())){
+                ::cpp::Struct&lt;SDL_Event&gt; e = linc::sdl::pollEvent();
+                <span class="hljs-keyword">if</span> (((e-&gt;type == (<span class="hljs-keyword">int</span>)<span class="hljs-number">256</span>))){
+                    running = <span class="hljs-keyword">false</span>;
+                }
+            }
+            SDL_SetRenderDrawColor(::Example_obj::renderer,
+                (<span class="hljs-keyword">int</span>)<span class="hljs-number">255</span>,(<span class="hljs-keyword">int</span>)<span class="hljs-number">255</span>,(<span class="hljs-keyword">int</span>)<span class="hljs-number">255</span>,(<span class="hljs-keyword">int</span>)<span class="hljs-number">255</span>);
+            SDL_RenderClear(::Example_obj::renderer);
+            SDL_RenderPresent(::Example_obj::renderer);
+            SDL_Delay((<span class="hljs-keyword">int</span>)<span class="hljs-number">4</span>);
+        }
+    <span class="hljs-keyword">return</span> null();
+}
+</code></pre>
+<p>&nbsp;</p>
+<hr>
+<p><a name="libs"></a></p>
+<h2 id="official-libraries">Official Libraries</h2>
+<p>Each library has it’s own readme and library specific notes in their repo.<br>Be sure to check each one directly for the full picture.</p>
+<p><a href="#sdl">SDL</a> . <a href="#openal">OpenAL</a> . <a href="#ogg">Ogg</a> . <a href="#dialogs">File dialogs</a> . <a href="#stb">stb</a> . <a href="#opengl"><em>OpenGL</em></a> . <a href="#steam"><em>Steam</em></a></p>
+<p><br/></p>
+<p><a name="sdl"></a></p>
+<h4 id="sdl">SDL</h4>
+<ul>
+<li>SDL is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware</li>
+<li><a href="https://wiki.libsdl.org/">homepage</a></li>
+<li><strong>status</strong> - <code>WIP</code> - close to 100% complete</li>
+<li><a href="https://github.com/snowkit/linc_sdl">repo</a> </li>
+</ul>
+<p><a name="openal"></a></p>
+<h4 id="openal">OpenAL</h4>
+<ul>
+<li>cross-platform, 3D audio API</li>
+<li><a href="http://kcat.strangesoft.net/openal.html">homepage</a></li>
+<li><strong>status</strong> - <code>ready</code></li>
+<li><a href="https://github.com/snowkit/linc_openal">repo</a> </li>
+</ul>
+<p><a name="ogg"></a></p>
+<h4 id="ogg-vorbis">Ogg vorbis</h4>
+<ul>
+<li>Ogg vorbis file format decoding</li>
+<li><a href="https://xiph.org/ogg/">homepage</a></li>
+<li><strong>status</strong> - <code>ready</code></li>
+<li><a href="https://github.com/snowkit/linc_ogg">repo</a> </li>
+</ul>
+<p><a name="dialogs"></a></p>
+<h4 id="dialogs">dialogs</h4>
+<ul>
+<li>Native file Open,Save and Folder dialogs for <code>Windows</code> <code>Mac</code> <code>Linux</code> </li>
+<li><strong>status</strong> - <code>ready</code></li>
+<li><a href="https://github.com/snowkit/linc_dialogs">repo</a> </li>
+</ul>
+<p><a name="stb"></a></p>
+<h4 id="stb">stb</h4>
+<ul>
+<li>A collection of simple to use libraries for games and apps</li>
+<li><a href="https://github.org/nothings/stb">homepage</a></li>
+<li><strong>status</strong> - <code>in progress</code><ul>
+<li><code>ready</code> stb_image</li>
+<li><code>ready</code> stb_image_write</li>
+</ul>
+</li>
+<li><a href="https://github.com/snowkit/linc_stb">repo</a> </li>
+</ul>
+<hr>
+<p>Libraries that are nearing completion:</p>
+<p><a name="opengl"></a></p>
+<h4 id="opengl">OpenGL</h4>
+<ul>
+<li>cross-platform, 2D and 3D rendering API</li>
+<li><a href="https://www.opengl.org/">homepage</a></li>
+<li><strong>status</strong> - <code>soon</code></li>
+<li><del>repo</del></li>
+</ul>
+<p><a name="steam"></a></p>
+<h4 id="steamworks">Steamworks</h4>
+<ul>
+<li>Steam platform SDK</li>
+<li><a href="https://partner.steamgames.com/home">homepage</a></li>
+<li><strong>status</strong> - <code>soon</code></li>
+<li><del>repo</del></li>
+</ul>
+<hr>
+<p><a name="libs"></a></p>
+<h2 id="libraries-in-development">Libraries in development</h2>
+<p> and from the community</p>
+<p><strong><a href="#contribute">Submit your library!</a></strong></p>
+<ul>
+<li>(more libraries on the way)</li>
+</ul>
+<hr>
+<p><a name="guidelines"></a></p>
+<h2 id="guidelines">Guidelines</h2>
+<p>Below is some (rough/WIP) information regarding<br>the structure of a linc library, and how they<br>would be considered for inclusion in the official list*.</p>
+<p>These are mostly <em>guidelines</em> and not <em>rules</em> because c++<br>is complex, and usually very nuanced, so the actual<br>outcome for a single library will be based on the native<br>library in question, and handled on case by case basis.</p>
+<p><strong>These guidelines will be refined in practice.</strong></p>
+<p>A linc library must be:  </p>
+<ul>
+<li>consistent in structure<ul>
+<li>files and folders consistently named </li>
+<li>folder structure matching a fixed structure</li>
+<li>consistent use of c++ namespaces</li>
+</ul>
+</li>
+<li>singular focus<ul>
+<li>ideally singular library</li>
+<li>ideally singular dependency</li>
+</ul>
+</li>
+<li>avoid composition of dependency<ul>
+<li>unless necessary<ul>
+<li>i.e ogg,theora,vorbis</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>light weight<ul>
+<li>no monolith dependencies<ul>
+<li>e.g using qt for simple dialogs</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>true to the underlying native lib<ul>
+<li>ideally, native documentation is close enough that it matches very closely and all existing documentation, examples, and reference can be leveraged.</li>
+</ul>
+</li>
+<li>true to haxe users<ul>
+<li>includes workflow, types, return values</li>
+</ul>
+</li>
+<li>as complete as possible<ul>
+<li>at minimum strive to be 100% complete</li>
+</ul>
+</li>
+<li>ideally uses <a href="https://github.com/native-toolkit/">native-toolkit</a> hxcpp-based submodules<ul>
+<li>unless drop in/header only</li>
+</ul>
+</li>
+</ul>
+<p>A more complete breakdown of all the guidelines in the xml and Haxe files<br>is to come.</p>
+<p><strong>Example anatomy</strong></p>
+<p>This is an example of the anatomy of a linc library.</p>
+<p><img src="./images/example-anatomy.png" alt="example anatomy"></p>
+<hr>
+<p><a name="contribute"></a></p>
+<h2 id="contribute">Contribute</h2>
+<p>Want to list a library above?</p>
+<ul>
+<li>Libraries are welcome!<ul>
+<li>But must follow the above format and guidelines</li>
+<li>Don’t be discouraged, we will help out</li>
+<li>High standards encourage good work</li>
+</ul>
+</li>
+<li>Open a discussion on the <a href="https://github.com/snowkit/linc/issues">linc repo</a><ul>
+<li>This allows others to help out!</li>
+<li>Allows early feedback and direction</li>
+<li>Allows avoiding redundant work</li>
+</ul>
+</li>
+<li>The linc team will advise and review<ul>
+<li>A variety of linc devs will weigh in</li>
+</ul>
+</li>
+<li>If everything looks good, it’s there!</li>
+</ul>
+<hr>
+<p><small>
+*The official list is nothing more than an affordance<br>for the end user - to know that what they are getting is<br>going to be well structured, usable, and what is said on the box.
+</small></p>
+<hr>
+<p><a name="guide"></a></p>
+<h2 id="native-extern-tips">Native extern tips</h2>
+<p>How do you go about making an extern library?</p>
+<p><strong>note</strong> that more concrete examples can be found in each repo.<br>More explicit guides (string conversion, haxe.io.Bytes etc) will be<br>added here in the near future.</p>
+<p>For even more information see the hxcpp talks:</p>
+<ul>
+<li><a href="http://gamehaxe.com/wwx/wwx2014.swf">http://gamehaxe.com/wwx/wwx2014.swf</a></li>
+<li><a href="http://gamehaxe.com/wwx/wwx2015.swf">http://gamehaxe.com/wwx/wwx2015.swf</a></li>
+</ul>
+<p>Feel free to ask questions at :</p>
+<ul>
+<li><a href="https://github.com/haxefoundation/hxcpp">hxcpp repo</a></li>
+<li><a href="https://groups.google.com/forum/#!forum/haxelang">haxe mailing list</a></li>
+<li><a href="https://github.com/snowkit/linc/issues">linc repo</a></li>
+</ul>
+<p><strong>Tips</strong></p>
+<ul>
+<li>Define an <code>extern class</code><ul>
+<li>can use <code>@:native(&#39;some::NativeClass&#39;)</code></li>
+<li>extern class has default public fields</li>
+<li>define members and functions without body<ul>
+<li><code>@:native(&#39;cpp_function&#39;)</code> for members</li>
+</ul>
+</li>
+<li>can use <code>inline</code> haxe functions<ul>
+<li><code>inline function ok() { haxe code }</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Make sure that your external code definition can be found<ul>
+<li>use <code>@:include(&#39;header.h&#39;)</code> on the <code>extern class</code></li>
+<li>every Haxe class that will <code>import</code>, gets the include</li>
+<li>can use <code>@:include(&#39;./relative.h&#39;)</code><ul>
+<li>relative to the hx file</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Use <code>cpp.Pointer</code>, <code>cpp.Struct</code>, <code>cpp.Reference</code><ul>
+<li>Contextual, use the best option for the haxe code</li>
+</ul>
+</li>
+<li>Normal c++ rules apply<ul>
+<li>Duplicate / unresolved symbols</li>
+<li>Include paths, linking paths</li>
+<li>Be wary of <code>@:include</code> and duplicate symbols<ul>
+<li><code>import</code> the same include twice can mean duplicates</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>examples</strong>      </p>
+<p><code>vec.h</code></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">namespace</span> m {
+    <span class="hljs-keyword">struct</span> vec {
+        <span class="hljs-keyword">float</span> x;
+        <span class="hljs-keyword">float</span> y;
+
+        <span class="hljs-keyword">void</span> scale_by(<span class="hljs-keyword">float</span> scalar) {
+            x *= scalar;
+            y *= scalar;
+        }
+    };
+}
+</code></pre>
+<p><code>Vec.hx</code></p>
+<pre><code class="lang-haxe"><span class="hljs-keyword">package</span> m;
+
+@:include(<span class="hljs-string">"./v.h"</span>)
+@:native(<span class="hljs-string">'m::vec'</span>)
+<span class="hljs-keyword">extern</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vec</span> </span>{
+    <span class="hljs-keyword">var</span> x:Float;
+    <span class="hljs-keyword">var</span> y:Float;
+
+    @:native(<span class="hljs-string">'scale_by'</span>)
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scale</span><span class="hljs-params">(scale:Float)</span><span class="hljs-type">:Void</span></span>;
+
+    <span class="hljs-keyword">inline</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">square</span><span class="hljs-params">()</span> <span class="hljs-type">: Void</span> </span>{
+        x *= x;
+        y *= y;
+    }
+};
+</code></pre>
+<p><code>folders</code></p>
+<pre><code>├── m/
+    ├── Vec.hx
+    └── vec.h
+</code></pre><p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr>
+<p><strong>linc is a <a href="http://snowkit.org/">snõwkit</a> community initiative</strong></p>
+<p><a href="http://snowkit.org" ><img src="./images/snowkit.png" /></a></p>
+<p><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/></p>
+
+        </div>
+    </body>
+
 </html>
