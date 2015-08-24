@@ -1,0 +1,21 @@
+{
+    "project_name" : "linc",
+    "project_git_url" : "http://github.com/snowkit/linc/",
+
+    "style_path" : "./linc/style/",
+    "template_path" : "./linc/templates/",
+    "images_path" : "./linc/images/",
+    "md_path" : "./linc/md/",
+
+    "md_input": ["**/+(*.md)"],
+    "output_path" : "../linc/",
+    "images_output_path" : "images/",
+    "template_index" : "index.html",
+
+    "force_full" : true,
+    "force_copy_template" : true,
+
+    "replacements" : [
+    ]
+
+}
