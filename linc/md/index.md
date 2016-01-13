@@ -164,7 +164,7 @@ Void Example_obj::update( )
 Each library has it's own readme and library specific notes in their repo.   
 Be sure to check each one directly for the full picture.
 
-[SDL](#sdl) . [OpenAL](#openal) . [Ogg](#ogg) . [File dialogs](#dialogs) . [stb](#stb) . [_OpenGL_](#opengl) . [_Steam_](#steam)
+[SDL](#sdl) . [OpenAL](#openal) . [Ogg](#ogg) . [ENet](#enet) . [File dialogs](#dialogs) . [stb](#stb) . [timestamp](#timestamp) . [_OpenGL_](#opengl) . [_Steam_](#steam)
 
 <br/>
 
@@ -189,6 +189,13 @@ Be sure to check each one directly for the full picture.
 - **status** - `ready`
 - [repo](https://github.com/snowkit/linc_ogg) 
 
+<a name="enet"></a>
+#### ENet
+- Networking communication library for various native platforms
+- [homepage](http://enet.bespin.org/)
+- **status** - `wip`
+- [repo](https://github.com/snowkit/linc_enet) 
+
 <a name="dialogs"></a>
 #### dialogs
 - Native file Open,Save and Folder dialogs for `Windows` `Mac` `Linux` 
@@ -203,6 +210,12 @@ Be sure to check each one directly for the full picture.
     - `ready` stb_image
     - `ready` stb_image_write
 - [repo](https://github.com/snowkit/linc_stb) 
+
+<a name="timestamp"></a>
+#### timestamp
+- A high resolution timer for `Mac` `Windows` `Linux` `Android` `iOS`
+- **status** - `ready`
+- [repo](https://github.com/snowkit/linc_timestamp) 
 
 ---
 
@@ -226,11 +239,14 @@ Libraries that are nearing completion:
 
 <a name="libs"></a>
 ## Libraries in development 
- and from the community
+ from the community
 
 **[Submit your library!](#contribute)**
 
-- (more libraries on the way)
+- linc_luajit - Lua JIT scripting language [repo](https://github.com/RudenkoArt/linc_luajit)
+- linc_box2d - Box2D physics library [repo](https://github.com/DanielUranga/box2d-linc)
+- linc_squirrel - Squirrel scripting language [repo](https://github.com/RudenkoArt/linc_squirrel)
+- linc_rtmidi - RtMidi MIDI IO library [repo](https://github.com/KeyMaster-/linc_rtmidi) 
 
 ---
 
@@ -274,6 +290,13 @@ A linc library must be:
 
 A more complete breakdown of all the guidelines in the xml and Haxe files   
 is to come.
+
+**Empty linc template**
+
+You can find a starting point for a library here.
+https://github.com/snowkit/linc_empty
+
+You can replace the word "empty" in the project with the lib name and get started quicker.
 
 **Example anatomy**
 
