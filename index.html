@@ -176,7 +176,7 @@ Void Example_obj::update( )
 <p><a name="libs"></a></p>
 <h2 id="official-libraries">Official Libraries</h2>
 <p>Each library has it’s own readme and library specific notes in their repo.<br>Be sure to check each one directly for the full picture.</p>
-<p><a href="#sdl">SDL</a> . <a href="#openal">OpenAL</a> . <a href="#ogg">Ogg</a> . <a href="#dialogs">File dialogs</a> . <a href="#stb">stb</a> . <a href="#opengl"><em>OpenGL</em></a> . <a href="#steam"><em>Steam</em></a></p>
+<p><a href="#sdl">SDL</a> . <a href="#openal">OpenAL</a> . <a href="#ogg">Ogg</a> . <a href="#enet">ENet</a> . <a href="#dialogs">File dialogs</a> . <a href="#stb">stb</a> . <a href="#timestamp">timestamp</a> . <a href="#opengl"><em>OpenGL</em></a> . <a href="#steam"><em>Steam</em></a></p>
 <p><br/></p>
 <p><a name="sdl"></a></p>
 <h4 id="sdl">SDL</h4>
@@ -202,6 +202,14 @@ Void Example_obj::update( )
 <li><strong>status</strong> - <code>ready</code></li>
 <li><a href="https://github.com/snowkit/linc_ogg">repo</a> </li>
 </ul>
+<p><a name="enet"></a></p>
+<h4 id="enet">ENet</h4>
+<ul>
+<li>Networking communication library for various native platforms</li>
+<li><a href="http://enet.bespin.org/">homepage</a></li>
+<li><strong>status</strong> - <code>wip</code></li>
+<li><a href="https://github.com/snowkit/linc_enet">repo</a> </li>
+</ul>
 <p><a name="dialogs"></a></p>
 <h4 id="dialogs">dialogs</h4>
 <ul>
@@ -213,13 +221,20 @@ Void Example_obj::update( )
 <h4 id="stb">stb</h4>
 <ul>
 <li>A collection of simple to use libraries for games and apps</li>
-<li><a href="https://github.com/nothings/stb">homepage</a></li>
+<li><a href="https://github.org/nothings/stb">homepage</a></li>
 <li><strong>status</strong> - <code>in progress</code><ul>
 <li><code>ready</code> stb_image</li>
 <li><code>ready</code> stb_image_write</li>
 </ul>
 </li>
 <li><a href="https://github.com/snowkit/linc_stb">repo</a> </li>
+</ul>
+<p><a name="timestamp"></a></p>
+<h4 id="timestamp">timestamp</h4>
+<ul>
+<li>A high resolution timer for <code>Mac</code> <code>Windows</code> <code>Linux</code> <code>Android</code> <code>iOS</code></li>
+<li><strong>status</strong> - <code>ready</code></li>
+<li><a href="https://github.com/snowkit/linc_timestamp">repo</a> </li>
 </ul>
 <hr>
 <p>Libraries that are nearing completion:</p>
@@ -242,10 +257,13 @@ Void Example_obj::update( )
 <hr>
 <p><a name="libs"></a></p>
 <h2 id="libraries-in-development">Libraries in development</h2>
-<p> and from the community</p>
+<p> from the community</p>
 <p><strong><a href="#contribute">Submit your library!</a></strong></p>
 <ul>
-<li>(more libraries on the way)</li>
+<li>linc_luajit - Lua JIT scripting language <a href="https://github.com/RudenkoArt/linc_luajit">repo</a></li>
+<li>linc_box2d - Box2D physics library <a href="https://github.com/DanielUranga/box2d-linc">repo</a></li>
+<li>linc_squirrel - Squirrel scripting language <a href="https://github.com/RudenkoArt/linc_squirrel">repo</a></li>
+<li>linc_rtmidi - RtMidi MIDI IO library <a href="https://github.com/KeyMaster-/linc_rtmidi">repo</a> </li>
 </ul>
 <hr>
 <p><a name="guidelines"></a></p>
@@ -298,6 +316,10 @@ Void Example_obj::update( )
 </li>
 </ul>
 <p>A more complete breakdown of all the guidelines in the xml and Haxe files<br>is to come.</p>
+<p><strong>Empty linc template</strong></p>
+<p>You can find a starting point for a library here.
+<a href="https://github.com/snowkit/linc_empty">https://github.com/snowkit/linc_empty</a></p>
+<p>You can replace the word “empty” in the project with the lib name and get started quicker.</p>
 <p><strong>Example anatomy</strong></p>
 <p>This is an example of the anatomy of a linc library.</p>
 <p><img src="./images/example-anatomy.png" alt="example anatomy"></p>
