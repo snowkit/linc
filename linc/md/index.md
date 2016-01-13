@@ -243,10 +243,10 @@ Libraries that are nearing completion:
 
 **[Submit your library!](#contribute)**
 
-- linc_luajit - Lua JIT scripting language [repo](https://github.com/RudenkoArt/linc_luajit)
-- linc_box2d - Box2D physics library [repo](https://github.com/DanielUranga/box2d-linc)
-- linc_squirrel - Squirrel scripting language [repo](https://github.com/RudenkoArt/linc_squirrel)
-- linc_rtmidi - RtMidi MIDI IO library [repo](https://github.com/KeyMaster-/linc_rtmidi) 
+- [linc_luajit](https://github.com/RudenkoArt/linc_luajit) - Lua JIT scripting language
+- [linc_box2d](https://github.com/DanielUranga/box2d-linc) - Box2D physics library
+- [linc_squirrel](https://github.com/RudenkoArt/linc_squirrel) - Squirrel scripting language
+- [linc_rtmidi](https://github.com/KeyMaster-/linc_rtmidi) - RtMidi MIDI IO library 
 
 ---
 
