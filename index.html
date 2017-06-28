@@ -105,17 +105,24 @@
 <h3 id="show-me-">Show me!</h3>
 <p><code>Example.hx</code></p>
 <pre><code><span class="hljs-keyword">import</span> sdl.SDL;
+<span class="hljs-keyword">import</span> sdl.Window;
+<span class="hljs-keyword">import</span> sdl.Renderer;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> </span>{
 
     <span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> state : { window:Window, renderer:Renderer };
 
-        <span class="hljs-comment">//Haxe entry point</span>
+    <span class="hljs-comment">//Haxe entry point</span>
     <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
 
         SDL.init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
         state = SDL.createWindowAndRenderer(<span class="hljs-number">320</span>, <span class="hljs-number">320</span>, SDL_WINDOW_RESIZABLE);
-        update();
+
+        <span class="hljs-keyword">while</span>(true) {
+            <span class="hljs-keyword">var</span> result:Bool = update();
+            <span class="hljs-keyword">if</span>(!result)
+                return;
+        }
 
     }
 
@@ -129,8 +136,8 @@
             SDL.renderClear(state.renderer);
             SDL.renderPresent(state.renderer);
             SDL.delay(<span class="hljs-number">4</span>);
-
         }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
     }
 
 }
